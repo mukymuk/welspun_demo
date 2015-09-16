@@ -5,6 +5,8 @@
 *.suo
 *.user
 *.sln.docstates
+CodeDB/
+*.old
 
 # Build results
 [Dd]ebug/

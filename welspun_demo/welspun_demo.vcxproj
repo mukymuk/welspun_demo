@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CDBA1EB7-0416-4DAD-95F9-AC8205730C83}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeIncludeSearchPath>.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\arm-eabi\thumb\fpu\cortex_m4;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;src;src/STM32F4xx_HAL_Driver/Inc;src/CMSIS/include;src/CMSIS/Device/ST/STM32F4xx/Include;src/pdm;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)welspun_demo-Debug.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeIncludeSearchPath>.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\arm-eabi\thumb\fpu\cortex_m4;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\STM32F4xx_HAL_Driver\Inc;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\STM32F4xx_HAL_Driver\Inc\Legacy;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS_HAL\Device\ST\STM32F4xx\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS_HAL\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS_HAL\RTOS\Template;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Release.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Release;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)welspun_demo-Release.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="debug.mak" />
+    <None Include="Makefile" />
+    <None Include="release.mak" />
+    <None Include="src\startup_stm32f407xx.s" />
+    <None Include="stm32.mak" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\audio_play.c" />
+    <ClCompile Include="src\audio_record.c" />
+    <ClCompile Include="src\cs43l22.c" />
+    <ClCompile Include="src\lis302dl.c" />
+    <ClCompile Include="src\lis3dsh.c" />
+    <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\mems.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dcmi_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma2d.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dsi.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_fmpi2c_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hash_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hcd.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_irda.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_iwdg.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_lptim.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_msp_template.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nand.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pccard.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pcd_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_qspi.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rng.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sd.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sdram.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_smartcard.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spdifrx.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sram.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_usart.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_wwdg.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fsmc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c" />
+    <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c" />
+    <ClCompile Include="src\stm32f4xx_it.c" />
+    <ClCompile Include="src\stm32f4_discovery.c" />
+    <ClCompile Include="src\stm32f4_discovery_accelerometer.c" />
+    <ClCompile Include="src\stm32f4_discovery_audio.c" />
+    <ClCompile Include="src\system_stm32f4xx.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
