@@ -1,41 +1,3 @@
-/**
-  ******************************************************************************
-  * @file    stm32f4_discovery_audio.c
-  * @author  MCD Application Team
-  * @version V2.1.0
-  * @date    14-August-2015
-  * @brief   This file provides the Audio driver for the STM32F4-Discovery 
-  *          board.  
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
-  *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
-  */ 
-
 /*==============================================================================
                                              User NOTES
 1. How To use this driver:
@@ -133,48 +95,11 @@ b) RECORD A FILE:
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4_discovery_audio.h"
 
-/** @addtogroup BSP
-  * @{
-  */
-  
-/** @addtogroup STM32F4_DISCOVERY
-  * @{
-  */
-
-/** @addtogroup STM32F4_DISCOVERY_AUDIO
-  * @brief This file includes the low layer audio driver available on STM32F4-Discovery
-  *        discovery board.
-  * @{
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_AUDIO_Private_Types
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-  
-/** @defgroup STM32F4_DISCOVERY_AUDIO_Private_Defines
-  * @{
-  */ 
 /* These PLL parameters are valid when the f(VCO clock) = 1Mhz */
 const uint32_t I2SFreq[8] = {8000, 11025, 16000, 22050, 32000, 44100, 48000, 96000};
 const uint32_t I2SPLLN[8] = {256, 429, 213, 429, 426, 271, 258, 344};
 const uint32_t I2SPLLR[8] = {5, 4, 4, 4, 4, 6, 3, 1};
-/**
-  * @}
-  */ 
 
-/** @defgroup STM32F4_DISCOVERY_AUDIO_Private_Macros
-  * @{
-  */
-/**
-  * @}
-  */ 
-  
-/** @defgroup STM32F4_DISCOVERY_AUDIO_Private_Variables
-  * @{
-  */
 /*##### PLAY #####*/
 static AUDIO_DrvTypeDef           *pAudioDrv;
 I2S_HandleTypeDef                 hAudioOutI2s;
@@ -182,28 +107,13 @@ I2S_HandleTypeDef                 hAudioOutI2s;
 /*### RECORDER ###*/
 I2S_HandleTypeDef                 hAudioInI2s;
 
-PDMFilter_InitStruct Filter[DEFAULT_AUDIO_IN_CHANNEL_NBR];
 __IO uint16_t AudioInVolume = DEFAULT_AUDIO_IN_VOLUME;
-/**
-  * @}
-  */ 
 
-/** @defgroup STM32F4_DISCOVERY_AUDIO_Private_Function_Prototypes
-  * @{
-  */ 
 static void I2S3_MspInit(void);
 static void I2S3_Init(uint32_t AudioFreq);
 
 static void I2S2_MspInit(void);
 static void I2S2_Init(uint32_t AudioFreq);
-static void PDMDecoder_Init(uint32_t AudioFreq, uint32_t ChnlNbr);
-/**
-  * @}
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_AUDIO_OUT_Private_Functions
-  * @{
-  */ 
 
 /**
   * @brief  Configures the audio peripherals.
@@ -655,14 +565,6 @@ static void I2S3_Init(uint32_t AudioFreq)
 }
   
 /**
-  * @}
-  */ 
-  
-/** @defgroup STM32F4_DISCOVERY_AUDIO_IN_Private_Functions
-  * @{
-  */ 
-  
-/**
   * @brief  Initializes wave recording.
   * @param  AudioFreq: Audio frequency to be configured for the I2S peripheral. 
   * @param  BitRes: Audio frequency to be configured for the I2S peripheral.
@@ -788,38 +690,6 @@ uint8_t BSP_AUDIO_IN_SetVolume(uint8_t Volume)
 }
 
 /**
-  * @brief  Converts audio format from PDM to PCM.
-  * @param  PDMBuf: Pointer to data PDM buffer
-  * @param  PCMBuf: Pointer to data PCM buffer
-  * @retval AUDIO_OK if correct communication, else wrong communication
-  */
-uint8_t BSP_AUDIO_IN_PDMToPCM(uint16_t *PDMBuf, uint16_t *PCMBuf)
-{
-  uint16_t AppPDM[INTERNAL_BUFF_SIZE/2];
-  uint32_t index = 0; 
-  
-  /* PDM Demux */
-  for(index = 0; index<INTERNAL_BUFF_SIZE/2; index++)
-  {
-    AppPDM[index] = HTONS(PDMBuf[index]);
-  }
-  
-  for(index = 0; index < DEFAULT_AUDIO_IN_CHANNEL_NBR; index++)
-  {
-    /* PDM to PCM filter */
-    PDM_Filter_64_LSB((uint8_t*)&AppPDM[index], (uint16_t*)&(PCMBuf[index]), AudioInVolume , (PDMFilter_InitStruct *)&Filter[index]);
-  }
-  /* Duplicate samples since a single microphone in mounted on STM32F4-Discovery */
-  for(index = 0; index < PCM_OUT_SIZE; index++)
-  {
-    PCMBuf[(index<<1)+1] = PCMBuf[index<<1];
-  }
-  
-  /* Return AUDIO_OK when all operations are correctly done */
-  return AUDIO_OK; 
-}
-
-/**
   * @brief  Rx Transfer completed callbacks
   * @param  hi2s: I2S handle
   * @retval None
@@ -875,37 +745,6 @@ __weak void BSP_AUDIO_IN_Error_Callback(void)
 {   
   /* This function is called when an Interrupt due to transfer error on or peripheral
      error occurs. */
-}
-
-/*******************************************************************************
-                            Static Functions
-*******************************************************************************/
-
-/**
-  * @brief  Initialize the PDM library.
-  * @param  AudioFreq: Audio sampling frequency
-  * @param  ChnlNbr: Number of audio channels (1: mono; 2: stereo)
-  * @retval None
-  */
-static void PDMDecoder_Init(uint32_t AudioFreq, uint32_t ChnlNbr)
-{ 
-  uint32_t i = 0;
-  
-  /* Enable CRC peripheral to unlock the PDM library */
-  __CRC_CLK_ENABLE();
-  
-  for(i = 0; i < ChnlNbr; i++)
-  {
-    /* Filter LP and HP Init */
-    Filter[i].LP_HZ = AudioFreq / 2;
-    Filter[i].HP_HZ = 10;
-    Filter[i].Fs = AudioFreq;
-    /* On STM32F4-Discovery a single microphone is mounted, samples are duplicated
-       to make stereo audio streams */
-    Filter[i].Out_MicChannels = 2;
-    Filter[i].In_MicChannels = ChnlNbr; 
-    PDM_Filter_Init((PDMFilter_InitStruct *)&Filter[i]);
-  }  
 }
 
 /**
@@ -1010,14 +849,6 @@ static void I2S2_Init(uint32_t AudioFreq)
 }  
 
 /**
-  * @}
-  */
-
-/** @defgroup STM32F4_DISCOVERY_AUDIO_IN_OUT_Private_Functions
-  * @{
-  */ 
-  
-/**
   * @brief  I2S error callbacks.
   * @param  hi2s: I2S handle
   * @retval None
@@ -1035,21 +866,3 @@ void HAL_I2S_ErrorCallback(I2S_HandleTypeDef *hi2s)
     BSP_AUDIO_IN_Error_Callback();
   }
 }
-
-/**
-  * @}
-  */ 
-  
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

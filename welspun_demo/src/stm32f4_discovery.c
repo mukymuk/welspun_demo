@@ -1,71 +1,5 @@
-/**
-  ******************************************************************************
-  * @file    stm32f4_discovery.c
-  * @author  MCD Application Team
-  * @version V2.1.0
-  * @date    14-August-2015
-  * @brief   This file provides set of firmware functions to manage Leds and
-  *          push-button available on STM32F4-Discovery Kit from STMicroelectronics.
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
-  *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
-  */
-/* Includes ------------------------------------------------------------------*/
+
 #include "stm32f4_discovery.h"
-
-/** @addtogroup BSP
-  * @{
-  */ 
-
-/** @addtogroup STM32F4_DISCOVERY
-  * @{
-  */   
-    
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL 
-  * @brief This file provides set of firmware functions to manage Leds and push-button
-  *        available on STM32F4-Discovery Kit from STMicroelectronics.
-  * @{
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_TypesDefinitions
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Defines
-  * @{
-  */
-  
-  /**
-  * @brief STM32F4 DISCO BSP Driver version number V2.1.0
-  */
 #define __STM32F4_DISCO_BSP_VERSION_MAIN   (0x02) /*!< [31:24] main version */
 #define __STM32F4_DISCO_BSP_VERSION_SUB1   (0x01) /*!< [23:16] sub1 version */
 #define __STM32F4_DISCO_BSP_VERSION_SUB2   (0x00) /*!< [15:8]  sub2 version */
@@ -74,21 +8,6 @@
                                              |(__STM32F4_DISCO_BSP_VERSION_SUB1 << 16)\
                                              |(__STM32F4_DISCO_BSP_VERSION_SUB2 << 8 )\
                                              |(__STM32F4_DISCO_BSP_VERSION_RC)) 
-/**
-  * @}
-  */ 
-
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Macros
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Variables
-  * @{
-  */ 
 GPIO_TypeDef* GPIO_PORT[LEDn] = {LED4_GPIO_PORT, 
                                  LED3_GPIO_PORT, 
                                  LED5_GPIO_PORT,
@@ -107,20 +26,7 @@ uint32_t SpixTimeout = SPIx_TIMEOUT_MAX;    /*<! Value of Timeout when SPI commu
 
 static SPI_HandleTypeDef    SpiHandle;
 static I2C_HandleTypeDef    I2cHandle;
-/**
-  * @}
-  */ 
 
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_FunctionPrototypes
-  * @{
-  */ 
-/**
-  * @}
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Functions
-  * @{
-  */ 
 static void     I2Cx_Init(void);
 static void     I2Cx_WriteData(uint8_t Addr, uint8_t Reg, uint8_t Value);
 static uint8_t  I2Cx_ReadData(uint8_t Addr, uint8_t Reg);
@@ -143,14 +49,6 @@ void            AUDIO_IO_Init(void);
 void            AUDIO_IO_DeInit(void);
 void            AUDIO_IO_Write(uint8_t Addr, uint8_t Reg, uint8_t Value);
 uint8_t         AUDIO_IO_Read(uint8_t Addr, uint8_t Reg);
-/**
-  * @}
-  */
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_LED_Functions
-  * @{
-  */ 
-
 /**
   * @brief  This method returns the STM32F4 DISCO BSP Driver revision
   * @param  None
@@ -235,14 +133,6 @@ void BSP_LED_Toggle(Led_TypeDef Led)
 }
 
 /**
-  * @}
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_BUTTON_Functions
-  * @{
-  */ 
-
-/**
   * @brief  Configures Button GPIO and EXTI Line.
   * @param  Button: Specifies the Button to be configured.
   *   This parameter should be: BUTTON_KEY
@@ -296,20 +186,6 @@ uint32_t BSP_PB_GetState(Button_TypeDef Button)
 {
   return HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
 }
-
-/**
-  * @}
-  */ 
-
-/** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_BUS_Functions
-  * @{
-  */ 
-
-/*******************************************************************************
-                            BUS OPERATIONS
-*******************************************************************************/
-
-/******************************* SPI Routines *********************************/
 
 /**
   * @brief  SPIx Bus initialization
@@ -397,12 +273,6 @@ static void SPIx_MspInit(void)
   HAL_GPIO_Init(DISCOVERY_SPIx_GPIO_PORT, &GPIO_InitStructure);
 }
 
-/******************************* I2C Routines**********************************/
-/**
-  * @brief  Configures I2C interface.
-  * @param  None
-  * @retval None
-  */
 static void I2Cx_Init(void)
 {
   if(HAL_I2C_GetState(&I2cHandle) == HAL_I2C_STATE_RESET)
@@ -514,12 +384,6 @@ static void I2Cx_MspInit(void)
   HAL_NVIC_SetPriority(DISCOVERY_I2Cx_ER_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DISCOVERY_I2Cx_ER_IRQn); 
 }
-
-/*******************************************************************************
-                            LINK OPERATIONS
-*******************************************************************************/
-
-/***************************** LINK ACCELEROMETER *****************************/
 
 /**
   * @brief  Configures the Accelerometer SPI interface.
@@ -643,8 +507,6 @@ void ACCELERO_IO_Read(uint8_t *pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead
   ACCELERO_CS_HIGH();
 }
 
-/********************************* LINK AUDIO *********************************/
-
 /**
   * @brief  Initializes Audio low level.
   * @param  None
@@ -711,21 +573,3 @@ uint8_t AUDIO_IO_Read(uint8_t Addr, uint8_t Reg)
 {
   return I2Cx_ReadData(Addr, Reg);
 }
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
-    
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

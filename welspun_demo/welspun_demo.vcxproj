@@ -35,7 +35,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeIncludeSearchPath>.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\arm-eabi\thumb\fpu\cortex_m4;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;src;src/STM32F4xx_HAL_Driver/Inc;src/CMSIS/include;src/CMSIS/Device/ST/STM32F4xx/Include;src/pdm;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\arm-eabi\thumb\fpu\cortex_m4;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.2.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.2.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;src;src/STM32F4xx_HAL_Driver/Inc;src/CMSIS/include;src/CMSIS/Device/ST/STM32F4xx/Include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
@@ -69,12 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\audio_play.c" />
-    <ClCompile Include="src\audio_record.c" />
     <ClCompile Include="src\cs43l22.c" />
-    <ClCompile Include="src\lis302dl.c" />
-    <ClCompile Include="src\lis3dsh.c" />
     <ClCompile Include="src\main.c" />
-    <ClCompile Include="src\mems.c" />
     <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c" />
     <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c" />
     <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c" />
@@ -144,9 +140,18 @@
     <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c" />
     <ClCompile Include="src\stm32f4xx_it.c" />
     <ClCompile Include="src\stm32f4_discovery.c" />
-    <ClCompile Include="src\stm32f4_discovery_accelerometer.c" />
     <ClCompile Include="src\stm32f4_discovery_audio.c" />
     <ClCompile Include="src\system_stm32f4xx.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\audio.h" />
+    <ClInclude Include="src\audio_play.h" />
+    <ClInclude Include="src\cs43l22.h" />
+    <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\stm32f4xx_hal_conf.h" />
+    <ClInclude Include="src\stm32f4xx_it.h" />
+    <ClInclude Include="src\stm32f4_discovery.h" />
+    <ClInclude Include="src\stm32f4_discovery_audio.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

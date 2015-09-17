@@ -1,52 +1,5 @@
-/**
-  ******************************************************************************
-  * @file    BSP/Src/audio_play.c 
-  * @author  MCD Application Team
-  * @version V1.2.2
-  * @date    01-July-2015
-  * @brief   This example code shows how to use AUDIO features for the play.
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
-  *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
-  */
 
-/* Includes ------------------------------------------------------------------*/
 #include "audio_play.h"
-
-/** @addtogroup STM32F4xx_HAL_Examples
-  * @{
-  */
-
-/** @addtogroup BSP
-  * @{
-  */
-
-/* Private typedef -----------------------------------------------------------*/
 
 typedef struct
 {
@@ -67,22 +20,13 @@ typedef struct
 
 }WAVE_FormatTypeDef;
 
-/* Private define ------------------------------------------------------------*/
-
-/* Audio file size and start address are defined here since the Audio file is 
-   stored in Flash memory as a constant table of 16-bit data */
 #define AUDIO_FILE_SIZE               0x70000
 #define AUDIO_FILE_ADDRESS            0x08080000   /* Audio file address */  
   
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
 extern __IO uint8_t UserPressButton;
-extern __IO uint32_t PauseResumeStatus;
+
 
 WAVE_FormatTypeDef *waveformat =  NULL;
-
-/* Variable used to replay audio sample (from play or record test)*/
-__IO uint32_t AudioTest = 0;
 
 /* Variables used in normal mode to manage audio file during DMA transfer */
 uint32_t AudioTotalSize           = 0xFFFF; /* This variable holds the total size of the audio file */
@@ -104,25 +48,8 @@ extern uint16_t WrBuffer[WR_BUFFER_SIZE];
 void AudioPlay_Test(void)
 {  
   /* Initial volume level (from 0 (Mute) to 100 (Max)) */
-  __IO uint8_t volume = 70;
-  
-  /* Initialize MEMS Accelerometer mounted on STM32F4-Discovery board */
-  if(BSP_ACCELERO_Init() != ACCELERO_OK)
-  {
-    /* Initialization Error */
-    Error_Handler();
-  }
-  
-  /* Enable MEMS click feature only for STM32F4-DISCO rev B board */
-  if (BSP_ACCELERO_ReadID() == I_AM_LIS302DL)
-  {
-    /* MEMS Accelerometer configure to manage PAUSE, RESUME operations */
-    BSP_ACCELERO_Click_ITConfig();
-    
-    /* Clear MEMS click interruption */
-    BSP_ACCELERO_Click_ITClear();
-  }
-  
+  __IO uint8_t volume = 75;
+ 
   /* Turn ON LED6: start of Audio file play */
   BSP_LED_On(LED6);
   
@@ -137,8 +64,7 @@ void AudioPlay_Test(void)
   
   /* Set variable used to stop player before starting */
   UserPressButton = 0;
-  AudioTest = 0;
-  
+ 
   /* Set the total number of data to be played */
   AudioTotalSize = AUDIO_FILE_SIZE;  
   /* Set the current audio pointer position */
@@ -150,28 +76,7 @@ void AudioPlay_Test(void)
   /* Update the current audio pointer position */
   CurrentPos += DMA_MAX(AudioTotalSize);
   
-  /* Infinite loop */
-  while(!UserPressButton)
-  { 
-    if (PauseResumeStatus == PAUSE_STATUS)
-    {
-      /* Turn ON LED4: Audio play in pause */
-      BSP_LED_On(LED4);
-      
-      /* Pause playing */
-      BSP_AUDIO_OUT_Pause();
-      PauseResumeStatus = IDLE_STATUS;
-    }
-    else if (PauseResumeStatus == RESUME_STATUS)
-    {
-      /* Turn OFF LED4: Audio play running */
-      BSP_LED_Off(LED4);
-      
-      /* Resume playing */
-      BSP_AUDIO_OUT_Resume();
-      PauseResumeStatus = IDLE_STATUS;
-    }
-  }
+  while (!UserPressButton);
   
   /* Stop Player before close Test */
   if (BSP_AUDIO_OUT_Stop(CODEC_PDWN_HW) != AUDIO_OK)
@@ -214,7 +119,7 @@ void BSP_AUDIO_OUT_TransferComplete_CallBack()
   }
   
   /* Audio sample used for play */
-  if((AudioTest == 0) && (replay == 1))
+  if((replay == 1))
   {
     /* Replay from the beginning */
     /* Set the current audio pointer position */
@@ -225,13 +130,6 @@ void BSP_AUDIO_OUT_TransferComplete_CallBack()
     AudioRemSize = AudioTotalSize - AUDIODATA_SIZE * DMA_MAX(AudioTotalSize);  
     /* Update the current audio pointer position */
     CurrentPos += DMA_MAX(AudioTotalSize);
-  }
-  
-  /* Audio sample saved during record */
-  if((AudioTest == 1) && (replay == 1))
-  {
-    /* Replay from the beginning */
-    BSP_AUDIO_OUT_Play(WrBuffer, AudioTotalSize);
   }
 }
 
@@ -245,13 +143,3 @@ void BSP_AUDIO_OUT_Error_CallBack(void)
   /* Stop the program with an infinite loop */
   Error_Handler();
 }
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
