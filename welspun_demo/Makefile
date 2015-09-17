@@ -35,7 +35,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := src/startup_stm32f407xx.s src/audio_play.c src/audio_record.c src/cs43l22.c src/lis302dl.c src/lis3dsh.c src/main.c src/mems.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cec.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cryp.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cryp_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dcmi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dcmi_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dsi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_fmpi2c.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_fmpi2c_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hash.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hash_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hcd.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_irda.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_lptim.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_msp_template.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nand.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nor.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pccard.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_qspi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rng.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sai.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sai_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sdram.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_smartcard.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spdifrx.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_wwdg.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c src/stm32f4xx_it.c src/stm32f4_discovery.c src/stm32f4_discovery_accelerometer.c src/stm32f4_discovery_audio.c src/system_stm32f4xx.c
+SOURCEFILES := src/startup_stm32f407xx.s src/audio_play.c src/cs43l22.c src/main.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cec.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cryp.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cryp_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dcmi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dcmi_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dsi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_fmpi2c.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_fmpi2c_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hash.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hash_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hcd.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_irda.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_lptim.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_msp_template.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nand.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nor.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pccard.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_qspi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rng.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sai.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sai_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sdram.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_smartcard.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spdifrx.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_wwdg.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c src/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c src/stm32f4xx_it.c src/stm32f4_discovery.c src/stm32f4_discovery_audio.c src/system_stm32f4xx.c
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -185,27 +185,11 @@ $(BINARYDIR)/audio_play.o : src/audio_play.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/audio_record.o : src/audio_record.c $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
 $(BINARYDIR)/cs43l22.o : src/cs43l22.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
-$(BINARYDIR)/lis302dl.o : src/lis302dl.c $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/lis3dsh.o : src/lis3dsh.c $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
 $(BINARYDIR)/main.o : src/main.c $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/mems.o : src/mems.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 
@@ -482,10 +466,6 @@ $(BINARYDIR)/stm32f4xx_it.o : src/stm32f4xx_it.c $(all_make_files) |$(BINARYDIR)
 
 
 $(BINARYDIR)/stm32f4_discovery.o : src/stm32f4_discovery.c $(all_make_files) |$(BINARYDIR)
-	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
-
-
-$(BINARYDIR)/stm32f4_discovery_accelerometer.o : src/stm32f4_discovery_accelerometer.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

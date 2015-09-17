@@ -46,13 +46,7 @@
     <ClCompile Include="src\audio_play.c">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\audio_record.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mems.c">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="src\stm32f4xx_it.c">
@@ -262,23 +256,40 @@
     <ClCompile Include="src\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c">
       <Filter>Source files\hal</Filter>
     </ClCompile>
-    <ClCompile Include="src\lis3dsh.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lis302dl.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="src\cs43l22.c">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="src\stm32f4_discovery.c">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\stm32f4_discovery_accelerometer.c">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="src\stm32f4_discovery_audio.c">
       <Filter>Source files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\audio.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\audio_play.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs43l22.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\main.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stm32f4_discovery.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stm32f4_discovery_audio.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stm32f4xx_hal_conf.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stm32f4xx_it.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
