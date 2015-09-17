@@ -114,6 +114,10 @@ static void I2S3_Init(uint32_t AudioFreq);
 
 static void I2S2_MspInit(void);
 static void I2S2_Init(uint32_t AudioFreq);
+<<<<<<< HEAD
+=======
+static void PDMDecoder_Init(uint32_t AudioFreq, uint32_t ChnlNbr);
+>>>>>>> c08b4608d838511ed8a0401308d192ba09791734
 
 /**
   * @brief  Configures the audio peripherals.
